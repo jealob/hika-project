@@ -1,0 +1,17 @@
+header {
+    background-image: url("../images/logo.jpg");
+    background-repeat: no-repeat;
+   background-color: black;
+   background-position: center;
+}
+
+
+.header-text {
+    margin: 8%;
+	font-size: 25px;
+	font: bold;
+	color: white;
+}
+.btn {
+    align-content: center;
+}
