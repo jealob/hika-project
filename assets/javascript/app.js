@@ -52,6 +52,7 @@ $(document).ready(function () {
 
     // Firebase watcher + initial loader + order/limit HINT: .on("child_added")
     database.ref().on("child_added", function (childSnapshot, prevChildKey) {
+        // 
         var data = childSnapshot.val();
 
     }, function (errorObject) {
