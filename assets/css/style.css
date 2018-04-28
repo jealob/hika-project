@@ -7,11 +7,9 @@ header {
 
 
 .header-text {
-    margin: 8%;
+    padding-top: 8%;
 	font-size: 25px;
 	font: bold;
-	color: white;
-}
-.btn {
-    align-content: center;
+    color: white;
+    font-family: 'Cormorant', serif;
 }
