@@ -55,10 +55,8 @@ $(document).ready(function () {
                 phone: phone,
                 eventType: eventType,
                 preferredContact: preferredContact,
-                // eventType: eventType,
                 eventDate: eventDate,
                 eventLoc: eventLoc,
-                budget: budget
             }
 
             // Push data to database
