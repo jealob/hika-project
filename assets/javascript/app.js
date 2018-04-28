@@ -3,6 +3,20 @@
 $(document).ready(function () {
     // Declare global variables
 
+     // Weather api
+     var weatherAPIKey = "&appid=3ddb20c4208b8c89b66edde10d53e4e3";
+     var city = ["Saint Paul, Minnesota", "Minneapolis, Minnesota", "Rochester, Minnesota", "Richmond, Wisconsin"];
+     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city[0] + weatherAPIKey;
+
+     // We then created an AJAX call
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response);
+
+      });
+
 
     // Initialize Firebase
     var config = {
@@ -17,6 +31,7 @@ $(document).ready(function () {
 
     // Reference firebase database
     var database = firebase.database();
+    
 
     // On click Submit Button 
     $("#submit").on("click", function (event) {
@@ -28,10 +43,8 @@ $(document).ready(function () {
         var $phone = $("#phone").val().trim();
         var $eventType = $("#eventType").val().trim();
         var $preferredContact = $("#preferredContact").val().trim();
-        // var $eventType = $("#eventType").val().trim();
         var $eventDate = $("#eventDate").val().trim();
         var $eventLoc = $("#eventLoc").val().trim();
-        var $budget = $("#budget").val().trim();
 
         // Create Object for the values
         var bookingInfo = {
