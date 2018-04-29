@@ -10,6 +10,14 @@ header {
     padding-top: 8%;
 	font-size: 25px;
 	font: bold;
-    color: white;
+    color: #F2D7D7;
     font-family: 'Cormorant', serif;
+}
+
+
+
+
+.fixed-bottom {
+    padding: 2%;
+    border-top-color: #F2D7D7;
 }
