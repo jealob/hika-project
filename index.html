@@ -129,67 +129,131 @@
             </div>
 
             <!-- Contact -->
-            <section id="contact">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12 text-center">
-                            <h2 class="section-heading text-uppercase">Contact Us</h2>
-                            <h3 class="section-subheading text-muted">Call us Today!</h3>
+            <form>
+                <div class="container">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Name">
                         </div>
-                        <div class="bootstrap-iso">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <form method="post">
-                                            <div class="form-group ">
-                                                <label class="control-label " for="name">
-                                                    Name
-                                                </label>
-                                                <input class="form-control" id="name" name="name" type="name" />
-                                            </div>
-                                            <div class="form-group ">
-                                                <label class="control-label requiredField" for="email">
-                                                    Email
-                                                    <span class="asteriskField">
-                                                        *
-                                                    </span>
-                                                </label>
-                                                <input class="form-control" id="email" name="email" type="email" />
-                                            </div>
-                                            <div class="form-group ">
-                                                <label class="control-label " for="tel">
-                                                    Phone Number
-                                                </label>
-                                                <input class="form-control" id="tel" name="tel" type="phone" />
-                                            </div>
-                                            <div class="form-group ">
-                                                <label class="control-label " for="date">
-                                                    Date
-                                                    <div class="form-group" input class="datepicker">
-                                                        <input type="date" class="form-control">
-                                                    </div>
-                                            </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label class="control-label " for="text">
-                                            Event Type
-                                        </label>
-                                        <input class="form-control" id="text" name="text" type="text" />
-                                    </div>
-                                    <div class="form-group">
-                                        <div>
-                                            <button class="btn btn-primary " name="submit" type="submit">
-                                                Submit
-                                            </button>
-                                        </div>
-                                    </div>
-                                    </form>
-                                </div>
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="phone">Phone Number</label>
+                            <input type="" class="form-control" id="phone" placeholder="555-555-555">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="eventLoc">Event Location</label>
+                        <input type="text" class="form-control" id="eventLoc" placeholder="1234 Main St">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="eventDate">Event Date</label>
+                            <input type="date" class="form-control" id="eventDate">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="eventType">Event Type</label>
+                            <select id="eventType" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>Wedding</option>
+                                <option>Bridal Shower</option>
+                                <option>Baby Shower</option>
+                                <option>Birthday</option>
+                                <option>Work Event</option>
+                                <option>Others</option>
+                            </select>
+                            <div class="form-group col-md-6">
+                                <label for="preferredContact">Preferred Method of Contact</label>
+                                <select id="preferredContact" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>Phone</option>
+                                    <option>Email</option>
+                                    <option>Text Message</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="message">Message</label>
+                                <textarea type="text" class="form-control" id="message" name="message" rows="4" cols="60"></textarea>
                             </div>
                         </div>
                     </div>
-                    <!-- Inline CSS based on choices in "Settings" tab -->
-            </section>
+                </div>
+                <!-- <button type="submit" class="btn btn-primary" id="submit">Submit</button> -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#warningModal" id="submit">Submit</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="myModalLabel">Attention</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                               You have successfully submitted your request form!
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End modal -->
+                <!-- Modal -->
+                <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="myModalLabel">Warning</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                To successfully submit a form required fields must be filled!
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End modal -->
+            </form>
+        </div>
+        </div>
+        </div>
+        </div>
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="copyright">Copyright &copy; Qaalbi Events 2018</span>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline social-buttons">
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
 
 </body>
 <!-- End of Content -->
@@ -205,5 +269,3 @@
 <script src="assets/javascript/app.js"></script>
 <!-- Add firebase  -->
 <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-
-</html>

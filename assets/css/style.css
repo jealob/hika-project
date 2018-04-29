@@ -15,3 +15,8 @@ header {
 .btn {
     align-content: center;
 }
+
+input:required,
+textarea:required {
+  border-color: red !important;
+}
