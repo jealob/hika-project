@@ -21,3 +21,10 @@ header {
     padding: 2%;
     border-top-color: #F2D7D7;
 }
+
+.planning-column {
+    margin: 0 10px; 
+    border: 1px solid black; 
+    height: 220px 
+
+}
