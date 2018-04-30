@@ -16,6 +16,26 @@
 <!-- Beginning of HTML Content -->
 
 <body id="page-top">
+    <!-- Pin for an event picture-->
+        <a data-pin-do="embedPin" data-pin-width="large" href="https://www.pinterest.com/pin/424182858646335803/"></a>
+    
+        <script>
+            // SDK for pinterest API
+                window.pAsyncInit = function() {
+                    PDK.init({
+                        appId: "<4964109274362948645>", // Contains app ID
+                        cookie: true
+                    });
+                };
+            
+                (function(d, s, id){
+                    var js, pjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {return;}
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//assets.pinterest.com/sdk/sdk.js";
+                    pjs.parentNode.insertBefore(js, pjs);
+                }(document, 'script', 'pinterest-jssdk'));
+            </script>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
@@ -173,6 +193,7 @@
                 </div>
             </section>
 
+
             <!-- Footer -->
             <footer>
                 <div class="container">
@@ -198,9 +219,10 @@
                     </div>
                 </div>
             </footer>
-
+            
 </body>
 <!-- End of Content -->
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <!-- Link to Core Bootstrap, JS CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
