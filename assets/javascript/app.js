@@ -1,6 +1,7 @@
 // JavaScript  document
 // Document Ready
 $(document).ready(function () {
+    $("#planning-section").hide();
     // Declare global variables
 
 
@@ -50,6 +51,12 @@ $(document).ready(function () {
         database.ref().push(bookingInfo);
     });
 
+    $("#planning-button").on("click", function (event) {
+        event.preventDefault();
+        console.log("click");
+        $("#myCarousel").hide();
+        $("#planning-section").show();
+    })
     // Firebase watcher + initial loader + order/limit HINT: .on("child_added")
     database.ref().on("child_added", function (childSnapshot, prevChildKey) {
         // 
