@@ -23,7 +23,17 @@ header {
 }
 
 .planning-column {
-    margin: 0 10px; 
-    border: 1px solid black; 
-    height: 700px 
-}
+    margin: 0 20px; 
+    border: 2px solid black; 
+    height: 1000px 
+     }
+     ul { display: block;
+        list-style-type: circle;
+     }
+     h1 {
+        font-size: 25px;
+        font-family: cursive;
+        font-weight: 900; 
+
+
+     }
