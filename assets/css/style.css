@@ -64,6 +64,21 @@ footer {
  text-align: center;
 }
 
+.planning-column {
+    margin: 0 20px; 
+    border: 2px solid black; 
+    height: 1000px 
+     }
+     ul { display: block;
+        list-style-type: circle;
+     }
+     h1 {
+        font-size: 25px;
+        font-family: cursive;
+        font-weight: 900; 
+
+
+     }
 #social #container {
     text-align: center;
   }
