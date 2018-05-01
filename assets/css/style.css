@@ -58,7 +58,27 @@ header {
   }
 
 
-.fixed-bottom {
+footer {
     padding: 2%;
-    border-top-color: #F2D7D7;
+ text-align: center;
 }
+
+#social #container {
+    text-align: center;
+  }
+  
+  #social #container ul {
+    float: none;
+  }
+  
+  #social #container ul li {
+    float: none;
+    padding-left: 10px;
+    list-style-type: none;
+   display: inline-block;
+  }
+
+.fab {
+    color: #F2D7D7;
+    align-items: center;
+} 
