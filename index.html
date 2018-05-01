@@ -12,9 +12,23 @@
   <link href="https://fonts.googleapis.com/css?family=Cormorant" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <title>QAALBI EVENTS</title>
+  <!-- IG API info -->
+  <script src="assets/javascript/instafeed.min.js" type= "text/javascript"></script>
+    <script type= "text/javascript">
+   var feed = new Instafeed({ 
+       get: 'tagged', 
+       tagName: 'qaalbievents', 
+       userId: '5583030622', 
+       accessToken: '5583030622.ba4c844.186ef35d5451485b80e09eff337e69b6', 
+       limit: '4',
+
+    });
+    feed.run();
+
+    </script>
 </head>
 
-<body id="page-top"></body>
+<body id="page-top">
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
 
   <a class="navbar-brand" href="index.html">QAALBI EVENTS</a>
@@ -31,6 +45,12 @@
       <li class="nav-item">
         <a class="nav-link js-scroll-trigger" href="#about">About</a>
       </li>
+      <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#photos">Photos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#igfeed">Instagram Feed</a>
+          </li>
       <li class="nav-item">
         <a id="planning-button" class="nav-link js-scroll-trigger" href="#">Planning</a>
       </li>
@@ -86,7 +106,7 @@
               <p> </p>
         </div>
     </div>
-
+    </div>
     <!--    Need to figure out the carousel next/previous buttons, for some odd reason 
     they're sitting on top of the carousel content, also need to get the buttons to actually do things..-->
 
@@ -99,6 +119,15 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
   </a>
+
+  <div class="row" id="igfeed-section">
+      <div class="col-sm-4">
+  <!-- IG Feed-->
+  <h1>View Our Live Instagram Feed!</h1>
+      <div id= "insta-wrap">
+              <div id= "instafeed">
+              </div> <!-- instafeed-->
+                  </div> <!-- insta-wrap-->
 <!-- Jump to top button -->
 <button onclick="topFunction()" id="myBtn" title="Go to top">^</button>
 
