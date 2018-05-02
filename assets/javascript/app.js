@@ -5,11 +5,12 @@ $(document).ready(function () {
 
     // Weather api
     var weatherAPIKey = "&appid=3ddb20c4208b8c89b66edde10d53e4e3";
-    var city = ["Saint Paul, Minnesota", "Minneapolis, Minnesota", "Rochester, Minnesota", "Richmond, Wisconsin"];
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city[0] + weatherAPIKey;
+    var location = ["Saint Paul, Minnesota", "Minneapolis, Minnesota", "Rochester, Minnesota", "Richmond, Wisconsin"];
 
     // We then created an AJAX call
-    city.forEach(function (element) {
+    location.forEach(function (city) {
+        // console.log(ci)
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + weatherAPIKey;
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -50,7 +51,7 @@ $(document).ready(function () {
         var eventLoc = $("#eventLoc").val().trim();
         var message = $("#message").val().trim();
 
-        if ((name && email && eventDate && eventType) || (name && phone && eventDate && eventType)){
+        if ((name && email && eventDate && eventType) || (name && phone && eventDate && eventType)) {
             // Create Object for the values
             console.log("passed");
             var bookingInfo = {
@@ -94,4 +95,91 @@ $(document).ready(function () {
     }, function (errorObject) {
         console.log("Errors handled: " + errorObject.code);
     });
+
+    // Get current position of the device
+    function getPos() {
+        var map;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(initMap, positionDenied, geoSettings);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+    // Device Location no found. No GPS on device
+    var positionDenied = function () {
+        alert("Unable to retrieve your location");
+    };
+
+    var geoSettings = {
+        enableHighAccuracy: false,
+        maximumAge: 30000,
+        timeout: 20000
+    };
+
+    //  Initialize map and plot coordinates on the map
+    var initMap = function (position) {
+        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var markerTitle = "You are here";
+        var myOptions = {
+            zoom: 16,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById('map'), myOptions);
+
+        $("#map").append("<input 'type': 'text' 'id': 'places-input'>");
+        var input = /** @type {HTMLInputElement} */(
+            document.getElementById('places-input')); //Need to create a div with the id pac-input
+
+        // Create the autocomplete helper, and associate it with
+        // an HTML text input box.
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+            map: map
+        });
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.open(map, marker);
+        });
+        // Get the full place details when the user selects a place from the
+        // list of suggestions.
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+            infowindow.close();
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+                return;
+            }
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17);
+            }
+
+            // Set the position of the marker using the place ID and location.
+            marker.setPlace(/** @type {!google.maps.Place} */({
+                placeId: place.place_id,
+                location: place.geometry.location
+            }));
+            marker.setVisible(true);
+
+            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                'Place ID: ' + place.place_id + '<br>' +
+                place.formatted_address + '</div>');
+            infowindow.open(map, marker);
+        });
+
+        // Set marker point on the map
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: markerTitle
+        });
+    }
+    getPos();
 })
