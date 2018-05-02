@@ -101,6 +101,13 @@ content:" *";
     height:400px;
 }
 
+.location {
+    border: 1px solid red;
+    display: block;
+    width:auto;
+    min-width: 200px;
+    /* float: left;
+}
 /* Media Queries */
 
 /* width less than 980px  */

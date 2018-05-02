@@ -2,21 +2,27 @@
 // Document Ready
 $(document).ready(function () {
     // Declare global variables
-
+    var latlng;
     // Weather api
     var weatherAPIKey = "&appid=3ddb20c4208b8c89b66edde10d53e4e3";
     var location = ["Saint Paul, Minnesota", "Minneapolis, Minnesota", "Rochester, Minnesota", "Richmond, Wisconsin"];
+    var unit = "&units=imperial";
 
     // We then created an AJAX call
     location.forEach(function (city) {
         // console.log(ci)
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + weatherAPIKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + unit + weatherAPIKey;
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
             console.log(response);
-
+            var location = $("<div class = 'location'>").append(
+                '<br>' + '<strong>' + response.name + '</strong>' +
+                '<br>' + 'Temperature (F): ' + response.main.temp +
+                '<br>' + 'Wind Speed: ' + response.wind.speed +
+                '<br>' + 'Humidity: ' + response.main.humidity);
+            $("#weather").append(location);
         });
     });
 
@@ -103,11 +109,13 @@ $(document).ready(function () {
             navigator.geolocation.getCurrentPosition(initMap, positionDenied, geoSettings);
         } else {
             alert("Geolocation is not supported by this browser.");
+            initMap();
         }
     }
     // Device Location no found. No GPS on device
     var positionDenied = function () {
-        alert("Unable to retrieve your location");
+        // alert("Unable to retrieve your location");
+        initMap();
     };
 
     var geoSettings = {
@@ -118,12 +126,15 @@ $(document).ready(function () {
 
     //  Initialize map and plot coordinates on the map
     var initMap = function (position) {
-        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        // if client blocks know your location
+        (!position) ? latlng = new google.maps.LatLng(44.0121221, -92.4801989) : latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        // latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         var markerTitle = "You are here";
         var myOptions = {
-            zoom: 16,
+            zoom: 12,
             center: latlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
+            // icon:
         };
 
         map = new google.maps.Map(document.getElementById('map'), myOptions);
@@ -134,14 +145,22 @@ $(document).ready(function () {
 
         // Create the autocomplete helper, and associate it with
         // an HTML text input box.
-        var autocomplete = new google.maps.places.Autocomplete(input);
+        // if (!input){ 
+        //     // debugger;
+        //     input = /** @type {HTMLInputElement} */(
+        //         document.getElementById('eventLoc'));
+        // }
+        // console.log(input);
+        var autocomplete =  new google.maps.places.Autocomplete(input);
+        // console.log(autocomplete);
         autocomplete.bindTo('bounds', map);
 
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
         var infowindow = new google.maps.InfoWindow();
         var marker = new google.maps.Marker({
-            map: map
+            map: map,
+            animation: google.maps.Animation.DROP,
         });
         google.maps.event.addListener(marker, 'click', function () {
             infowindow.open(map, marker);
@@ -182,4 +201,27 @@ $(document).ready(function () {
         });
     }
     getPos();
+
+    $("#find").on("click", function () {
+        var address = $("#eventLoc").val().trim();
+        var googleAPIKey = "AIzaSyBf3B6oIwOLvm3DQgH-gsJu8bsON0AT8ao";
+        var geoURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address +
+            "&radius=150&key=" + googleAPIKey;
+        // console.log(geoURL);
+        $.ajax({
+            url: geoURL,
+            method: "GET"
+        }).then(function (response) {
+            // console.log(response);
+            // latlng = response.results[0].geometry.location;
+            // eventLoc.val(response.results[0].formatted_address);
+            (response.results.length === 1) ? address = response.results[0].formatted_address : address;
+            // Transfer content to HTML
+            $("#eventLoc").val(address);
+            $("#places-input").val(address);
+            address = "";
+            // getPos();
+            // debugger;
+        });
+    })
 })
