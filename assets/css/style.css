@@ -14,8 +14,18 @@ header {
     font-family: 'Cormorant', serif;
 }
 
+.carousel-arrow {
+    height: 230px;
+    margin-top: 55px;
 
 
+}
+
+#igfeed-section { 
+margin-top: 20px;
+
+
+}
 /* .carousel-control-prev-icon,
 .carousel-control-next-icon {
   height: 100px;
@@ -64,11 +74,15 @@ footer {
     padding: 2%;
  text-align: center;
 }
+#planning {
+margin-top: 20px;
 
+
+}
 .planning-column {
     margin: 0 20px; 
     border: 2px solid black; 
-    height: 1000px 
+    height: 770px 
      }
      ul { display: block;
         list-style-type: circle;
