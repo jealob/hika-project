@@ -10,7 +10,7 @@ h2 {
 	text-shadow: 4px 4px 4px #aaa;
 }
 #instawrap, #instafeed {
-	postition: absolute;
+	postition: fixed;
 	width: 100px;
 	height: 100px;
 }
