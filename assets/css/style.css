@@ -9,9 +9,7 @@ h2 {
 	font-size: 55px;
 	text-shadow: 4px 4px 4px #aaa;
 }
-#instawrap, #instafeed {
-	position: relative;
-}
+
 header {
     background-image: url("../images/logo.jpg");
     background-repeat: no-repeat;
