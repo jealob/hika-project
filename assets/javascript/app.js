@@ -40,7 +40,7 @@ $(document).ready(function () {
         tagName: 'qaalbievents',
         userId: '5583030622',
         accessToken: '5583030622.ba4c844.186ef35d5451485b80e09eff337e69b6',
-        limit: '4',
+        limit: '8',
 
     });
     feed.run(); //Instagram Feed ends
