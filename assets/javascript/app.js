@@ -1,31 +1,49 @@
 // JavaScript  document
 // Document Ready
 $(document).ready(function () {
-    $("#planning-section").hide();
+
     // Declare global variables
     var latlng;
-    // Weather api
-    // var weatherAPIKey = "&appid=3ddb20c4208b8c89b66edde10d53e4e3";
-    // var location = ["Saint Paul, Minnesota", "Minneapolis, Minnesota", "Rochester, Minnesota", "Richmond, Wisconsin"];
-    // var unit = "&units=imperial";
 
-    // // We then created an AJAX call
-    // location.forEach(function (city) {
-    //     // console.log(ci)
-    //     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + unit + weatherAPIKey;
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         var location = $("<div class = 'location'>").append(
-    //             '<br>' + '<strong>' + response.name + '</strong>' +
-    //             '<br>' + 'Temperature (F): ' + response.main.temp +
-    //             '<br>' + 'Wind Speed: ' + response.wind.speed +
-    //             '<br>' + 'Humidity: ' + response.main.humidity);
-    //         $("#weather").append(location);
-    //     });
-    // });
+    // Jump to Top Button 
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    } //Jump to the Top ends
+
+    // What is this ????
+    $("#planning-section").hide();
+    $("#planning-button").on("click", function (event) {
+        event.preventDefault();
+        console.log("click");
+        $("#myCarousel").hide();
+        $("#planning-section").show();
+    }) //Ends
+
+    // Instagram Feed API
+    var feed = new Instafeed({
+        get: 'tagged',
+        tagName: 'qaalbievents',
+        userId: '5583030622',
+        accessToken: '5583030622.ba4c844.186ef35d5451485b80e09eff337e69b6',
+        limit: '4',
+
+    });
+    feed.run(); //Instagram Feed ends
 
 
     // Initialize Firebase
@@ -46,7 +64,6 @@ $(document).ready(function () {
     // On click Submit Button 
     $("#submit").on("click", function (event) {
         event.preventDefault();
-
 
         // Grab client information
         var name = $("#name").val().trim();
@@ -91,14 +108,8 @@ $(document).ready(function () {
             $(this).attr("data-target", "#warningModal");
             $('#warningModal').on();
         }
-    });
+    }); // On submit click Ends
 
-    $("#planning-button").on("click", function (event) {
-        event.preventDefault();
-        console.log("click");
-        $("#myCarousel").hide();
-        $("#planning-section").show();
-    })
     // Firebase watcher + initial loader + order/limit HINT: .on("child_added")
     database.ref().on("child_added", function (childSnapshot, prevChildKey) {
         // 
@@ -107,8 +118,10 @@ $(document).ready(function () {
 
     }, function (errorObject) {
         console.log("Errors handled: " + errorObject.code);
-    });
+    }); //Firebase ends
 
+
+    // Google Map API
     // Get current position of the device
     function getPos() {
         var map;
@@ -158,7 +171,7 @@ $(document).ready(function () {
         //         document.getElementById('eventLoc'));
         // }
         // console.log(input);
-        var autocomplete =  new google.maps.places.Autocomplete(input);
+        var autocomplete = new google.maps.places.Autocomplete(input);
         // console.log(autocomplete);
         autocomplete.bindTo('bounds', map);
 
@@ -206,9 +219,9 @@ $(document).ready(function () {
             map: map,
             title: markerTitle
         });
-    }
-    getPos();
+    }//Google map API ends
 
+    // On click search button
     $("#search").on("click", function () {
         var address = $("#eventLoc").val().trim();
         var googleAPIKey = "AIzaSyBf3B6oIwOLvm3DQgH-gsJu8bsON0AT8ao";
@@ -230,5 +243,31 @@ $(document).ready(function () {
             // getPos();
             // debugger;
         });
-    })
+    })//on click event ends
+
+    // Initialize map
+    getPos();
 })
+
+// Weather api
+    // var weatherAPIKey = "&appid=3ddb20c4208b8c89b66edde10d53e4e3";
+    // var location = ["Saint Paul, Minnesota", "Minneapolis, Minnesota", "Rochester, Minnesota", "Richmond, Wisconsin"];
+    // var unit = "&units=imperial";
+
+    // // We then created an AJAX call
+    // location.forEach(function (city) {
+    //     // console.log(ci)
+    //     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + unit + weatherAPIKey;
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         var location = $("<div class = 'location'>").append(
+    //             '<br>' + '<strong>' + response.name + '</strong>' +
+    //             '<br>' + 'Temperature (F): ' + response.main.temp +
+    //             '<br>' + 'Wind Speed: ' + response.wind.speed +
+    //             '<br>' + 'Humidity: ' + response.main.humidity);
+    //         $("#weather").append(location);
+    //     });
+    // });
