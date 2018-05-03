@@ -25,6 +25,9 @@ $(document).ready(function () {
         document.documentElement.scrollTop = 0;
     } //Jump to the Top ends
 
+    // on click jump to the top button event
+    $("#myBtn").on("click", topFunction);
+
     // What is this ????
     $("#planning-section").hide();
     $("#planning-button").on("click", function (event) {
