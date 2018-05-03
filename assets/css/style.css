@@ -3,6 +3,10 @@ body, html {
   min-width: 400px;
 }
 
+h2 {
+	text-align: center;
+}
+
 header {
     background-image: url("../images/logo.jpg");
     background-repeat: no-repeat;
