@@ -5,27 +5,27 @@ $(document).ready(function () {
     // Declare global variables
     var latlng;
     // Weather api
-    var weatherAPIKey = "&appid=3ddb20c4208b8c89b66edde10d53e4e3";
-    var location = ["Saint Paul, Minnesota", "Minneapolis, Minnesota", "Rochester, Minnesota", "Richmond, Wisconsin"];
-    var unit = "&units=imperial";
+    // var weatherAPIKey = "&appid=3ddb20c4208b8c89b66edde10d53e4e3";
+    // var location = ["Saint Paul, Minnesota", "Minneapolis, Minnesota", "Rochester, Minnesota", "Richmond, Wisconsin"];
+    // var unit = "&units=imperial";
 
-    // We then created an AJAX call
-    location.forEach(function (city) {
-        // console.log(ci)
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + unit + weatherAPIKey;
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            console.log(response);
-            var location = $("<div class = 'location'>").append(
-                '<br>' + '<strong>' + response.name + '</strong>' +
-                '<br>' + 'Temperature (F): ' + response.main.temp +
-                '<br>' + 'Wind Speed: ' + response.wind.speed +
-                '<br>' + 'Humidity: ' + response.main.humidity);
-            $("#weather").append(location);
-        });
-    });
+    // // We then created an AJAX call
+    // location.forEach(function (city) {
+    //     // console.log(ci)
+    //     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + unit + weatherAPIKey;
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         var location = $("<div class = 'location'>").append(
+    //             '<br>' + '<strong>' + response.name + '</strong>' +
+    //             '<br>' + 'Temperature (F): ' + response.main.temp +
+    //             '<br>' + 'Wind Speed: ' + response.wind.speed +
+    //             '<br>' + 'Humidity: ' + response.main.humidity);
+    //         $("#weather").append(location);
+    //     });
+    // });
 
 
     // Initialize Firebase
@@ -209,7 +209,7 @@ $(document).ready(function () {
     }
     getPos();
 
-    $("#find").on("click", function () {
+    $("#search").on("click", function () {
         var address = $("#eventLoc").val().trim();
         var googleAPIKey = "AIzaSyBf3B6oIwOLvm3DQgH-gsJu8bsON0AT8ao";
         var geoURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address +

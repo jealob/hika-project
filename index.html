@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" heref="./assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Cormorant" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <title>QAALBI EVENTS</title>
     <!-- IG API info -->
     <script src="assets/javascript/instafeed.min.js" type="text/javascript"></script>
@@ -165,7 +167,7 @@
         <!-- Contact -->
         <h2> Contacts Us Today! </h2>
         <div class="row" id="contact">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 border">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <form>
                     <div class="form-row">
                         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -189,6 +191,12 @@
                             <input type="" class="form-control" id="phone" placeholder="123-456-7890">
                         </div>
                         <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <label for="eventDate">Event Date
+                                <span class="required-field"> *</span>
+                            </label>
+                            <input type="date" class="form-control" id="eventDate">
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                             <label for="preferredContact">Contact Mode</label>
                             <select id="preferredContact" class="form-control">
                                 <option selected>Preferred Mode...</option>
@@ -196,13 +204,6 @@
                                 <option>Email</option>
                                 <option>Text Message</option>
                             </select>
-                        </div>
-
-                        <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <label for="eventDate">Event Date
-                                <span class="required-field"> *</span>
-                            </label>
-                            <input type="date" class="form-control" id="eventDate">
                         </div>
                     </div>
                     <div class="form-row">
@@ -213,7 +214,7 @@
                         <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                             <label for="find">Find Address</label>
                             <br>
-                            <button type="button" class="btn btn-primary" id="find">Search</button>
+                            <button type="button" class="btn btn-primary" id="search">Search</button>
                         </div>
                     </div>
                     <div class="form-row">
@@ -255,14 +256,14 @@
             </div>
             <!-- Submit form column ends -->
             <!-- APIs Column -->
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center border">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
                 <input id="places-input" class="controls" type="text" placeholder="Search Box">
                 <div id="map"></div>
 
-                <div id="weather">
-                    Weather
-                    <!-- Weather Information -->
-                </div>
+                <!-- <div id="weather">
+                    Weather -->
+                <!-- Weather Information -->
+                <!-- </div> -->
             </div>
         </div>
         <!-- Weather and map API column ends-->
@@ -370,7 +371,7 @@
                 </div>
 
             </nav>
-            
+
         </footer>
 
         <!-- End of Content -->

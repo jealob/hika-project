@@ -149,6 +149,10 @@ header {
   color: red;
 }
 
+label {
+  font-weight: bold;
+}
+
 #description {
   font-family: Roboto;
   font-size: 15px;
