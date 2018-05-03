@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" heref="./assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" heref="./assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Cormorant" rel="stylesheet">
     <title>QAALBI EVENTS</title>
@@ -173,17 +173,23 @@
                 <form>
                     <div class="form-row">
                         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                            <label for="name">Name</label>
+                            <label for="name">Name
+                                <span class="required-field"> *</span>
+                            </label>
                             <input type="text" class="required form-control" id="name" placeholder="Mary Smith">
                         </div>
                         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                            <label for="email">Email</label>
+                            <label for="email">Email
+                                <span class="required-field"> *</span>
+                            </label>
                             <input type="email" class="form-control" id="email" placeholder="someone@email.com">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <label for="phone">Phone</label>
+                            <label for="phone">Phone
+                                <span class="required-field"> *</span>
+                            </label>
                             <input type="" class="form-control" id="phone" placeholder="123-456-7890">
                         </div>
                         <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -195,8 +201,11 @@
                                 <option>Text Message</option>
                             </select>
                         </div>
+
                         <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <label for="eventDate">Event Date</label>
+                            <label for="eventDate">Event Date
+                                <span class="required-field"> *</span>
+                            </label>
                             <input type="date" class="form-control" id="eventDate">
                         </div>
                     </div>

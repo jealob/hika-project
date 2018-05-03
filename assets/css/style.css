@@ -119,7 +119,7 @@ margin-top: 20px;
     align-items: center;
 } 
 
-/* From appJS styling dont touch */
+/* From form styling dont touch */
 header {
   background-image: url("../images/logo.jpg");
   background-repeat: no-repeat;
@@ -138,8 +138,8 @@ header {
   align-content: center;
 }
 
-.required:after { 
-  content:" *";
+.required-field { 
+  color: red;
 }
 
 #description {
