@@ -10,8 +10,7 @@ h2 {
 	text-shadow: 4px 4px 4px #aaa;
 }
 #instawrap, #instafeed {
-	width: 100px;
-	height: 100px;
+	position: relative;
 }
 header {
     background-image: url("../images/logo.jpg");
