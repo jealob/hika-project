@@ -3,6 +3,13 @@ body, html {
   min-width: 400px;
 }
 
+h2 {
+	text-align: right;
+	font-family: 'Tangerine', serif;
+	font-size: 48px;
+	text-shadow: 4px 4px 4px #aaa;
+}
+
 header {
     background-image: url("../images/logo.jpg");
     background-repeat: no-repeat;
