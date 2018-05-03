@@ -212,7 +212,7 @@ $(document).ready(function () {
             url: geoURL,
             method: "GET"
         }).then(function (response) {
-            // console.log(response);
+            console.log(response);
             // latlng = response.results[0].geometry.location;
             // eventLoc.val(response.results[0].formatted_address);
             (response.results.length === 1) ? address = response.results[0].formatted_address : address;
