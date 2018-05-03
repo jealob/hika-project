@@ -120,7 +120,8 @@
                         </ul>
                     </div>
                 </div>
-               <div class="col-md-4">
+
+                <div class="col-md-4">
                     <div class="planning-column">
                         <h1>Month-of-Planning</h1>
                         <ul>
@@ -168,169 +169,6 @@
                 </div>
             </div>
         </div>
-
-            <!-- Contact -->
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 border">
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="name">Name</label>
-                                <input type="text" class="required form-control" id="name" placeholder="Mary Smith">
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="someone@email.com">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <label for="phone">Phone</label>
-                                <input type="" class="form-control" id="phone" placeholder="123-456-7890">
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <label for="preferredContact">Contact Mode</label>
-                                <select id="preferredContact" class="form-control">
-                                    <option selected>Preferred Mode...</option>
-                                    <option>Phone</option>
-                                    <option>Email</option>
-                                    <option>Text Message</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <label for="eventDate">Event Date</label>
-                                <input type="date" class="form-control" id="eventDate">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                                <label for="eventLoc">Event Location</label>
-                                <input type="text" class="form-control" id="eventLoc" placeholder="1234 Main St">
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <label for="find">Find Address</label>
-                                <br>
-                                <button type="button" class="btn btn-primary" id="find">Search</button>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <label for="eventType">Event Type</label>
-                                <select id="eventType" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>Wedding</option>
-                                    <option>Bridal Shower</option>
-                                    <option>Baby Shower</option>
-                                    <option>Birthday</option>
-                                    <option>Work Event</option>
-                                    <option>Others</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <label for="preferredContact">Packages</label>
-                                <select id="preferredContact" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>Basic</option>
-                                    <option>Plus</option>
-                                    <option>Premium</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                                <label for="message">Message</label>
-                                <textarea type="text" class="form-control" id="message" name="message" placeholder="Addtional message you want us to know"
-                                    rows="4" cols="60"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#warningModal" id="submit">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- Submit form column ends -->
-                <!-- APIs Column -->
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center border">
-                    <input id="places-input" class="controls" type="text" placeholder="Search Box">
-                    <div id="map"></div>
-
-                    <div id="weather">
-                        Weather
-                        <!-- Weather Information -->
-                    </div>
-                </div>
-            </div>
-            <!-- Weather and map API column ends-->
-        </div>
-        <!-- Contact Row dnds -->
-        <!-- Modal -->
-        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="myModalLabel">Attention</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        You have successfully submitted your request form!
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End modal -->
-        <!-- Modal -->
-        <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="myModalLabel">Warning</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        To successfully submit a form required fields must be filled!
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End modal -->
-
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <span class="copyright">Copyright &copy; Qaalbi Events 2018</span>
-                    </div>
-                    <div class="col-md-4">
-                        <ul class="list-inline social-buttons">
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-          </footer>
 
         <!--    Need to figure out the carousel next/previous buttons, for some odd reason 
     they're sitting on top of the carousel content, also need to get the buttons to actually do things..-->
@@ -395,6 +233,7 @@
                 </nav>
 
             </footer>
+
             <!-- End of Content -->
             <!-- Link to Core Bootstrap, JS CDN -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -412,20 +251,5 @@
             <!-- Add firebase  -->
             <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 </body>
-<!-- End of Content -->
-<!-- Link to Core Bootstrap, JS CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-<!-- Added Moment JS -->
-<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-<!-- Link to Javascript file -->
-<script src="assets/javascript/app.js"></script>
-<!-- Add Google Map API -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBf3B6oIwOLvm3DQgH-gsJu8bsON0AT8ao&libraries=places" async
-    defer></script>
-<!-- Add firebase  -->
-<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+
 </html>
