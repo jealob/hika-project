@@ -69,46 +69,73 @@ $(document).ready(function () {
         event.preventDefault();
 
         // Grab client information
+        var date = moment().format("X");
         var name = $("#name").val().trim();
         var email = $("#email").val().trim();
         var phone = $("#phone").val().trim();
         var preferredContact = $("#preferredContact").val().trim();
         var eventType = $("#eventType").val().trim();
+        // var eventDate = moment($("#eventDate").val().trim(), "YYYY/MM/DD").format("X");
         var eventDate = $("#eventDate").val().trim();
         var eventLoc = $("#eventLoc").val().trim();
         var message = $("#message").val().trim();
 
+        var timeDiff = moment(eventDate).diff(moment(), "hours");
+        // debugger;
         if ((name && email && eventDate && eventType) || (name && phone && eventDate && eventType)) {
-            // Create Object for the values
-            console.log("passed");
-            var bookingInfo = {
-                name: name,
-                email: email,
-                phone: phone,
-                eventType: eventType,
-                preferredContact: preferredContact,
-                eventDate: eventDate,
-                eventLoc: eventLoc,
-                message: message,
-            }
+            if (timeDiff > 23) {
+                // Create Object for the values
+                // console.log("passed");
+                var bookingInfo = {
+                    date: date,
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    eventDate: eventDate,
+                    preferredContact: preferredContact,
+                    eventType: eventType,
+                    eventLoc: eventLoc,
+                    serviceType: serviceType,
+                    message: message,
+                }
 
-            // Push data to database
-            database.ref().push(bookingInfo);
-            // Change button attribute to call to call success modal
-            $(this).attr("data-target", "#successModal");
-            $('#successModal').on();
-            $("#name").val("");
-            $("#email").val("");
-            $("#phone").val("");
-            $("#preferredContact").val("");
-            $("#eventType").val("");
-            $("#eventLoc").val("");
-            $("#eventDate").val("");
-            $("#message").val("");
+                for (var item in bookingInfo) {
+                    if ((bookingInfo[item] === undefined) || (bookingInfo[item] === "Choose...")) {
+                        item = "none";
+                    }
+                };
+
+                // Push data to database
+                database.ref().push(bookingInfo);
+
+                // Show success notification modal
+                $(this).attr("data-target", "#successModal");
+                $('#notfiy').html("");
+                $('#successModal').on();
+
+                // clear form
+                $("#name").val("");
+                $("#email").val("");
+                $("#phone").val("");
+                $("#preferredContact").val("");
+                $("#eventType").val("");
+                $("#eventDate").val("");
+                $("#eventLoc").val("");
+                $("#serviceType").val("");
+                $("#message").val("");
+            }
+            else {
+                // console.log("time too close");
+                $(this).attr("data-target", "#warningModal");
+                $('#notify').html("The Chosne date for your event is less than 24 hours. We are sorry we can only respond  if event is 48 hours or more from the time of inquiry, Changing your event date to a later date will make everyone happy.");
+                $('#warningModal').on();
+
+            }
         }
         else {
-            console.log("failed");
+            // console.log("failed");
             $(this).attr("data-target", "#warningModal");
+            $('#notify').html("To successfully submit a form required fields must be filled!, Please try filling out name, event date, event type and phone/email.");
             $('#warningModal').on();
         }
     }); // On submit click Ends
@@ -118,6 +145,10 @@ $(document).ready(function () {
         // 
         var data = childSnapshot.val();
         console.log(data);
+        var submissionDate = moment.unix(data.date).format("MM/DD/YY");
+
+        // Add train Itinerary to table
+        $(".table > tbody").append("<tr><td>" + submissionDate + "</td><td>" + data.name + "</td><td>" + data.email + "</td><td>" + data.phone + "</td><td>" + data.eventDate + "</td><td>" + data.preferredContact + "</td><td>" + data.eventType + "</td><td>" + data.eventLoc + "</td><td>" + data.serviceType + "</td><td>" + data.message + "</td></tr>");
 
     }, function (errorObject) {
         console.log("Errors handled: " + errorObject.code);
