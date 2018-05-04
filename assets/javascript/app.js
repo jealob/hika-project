@@ -78,6 +78,7 @@ $(document).ready(function () {
         // var eventDate = moment($("#eventDate").val().trim(), "YYYY/MM/DD").format("X");
         var eventDate = $("#eventDate").val().trim();
         var eventLoc = $("#eventLoc").val().trim();
+        var serviceType = $("#serviceType").val().trim();
         var message = $("#message").val().trim();
 
         var timeDiff = moment(eventDate).diff(moment(), "hours");
@@ -127,7 +128,7 @@ $(document).ready(function () {
             else {
                 // console.log("time too close");
                 $(this).attr("data-target", "#warningModal");
-                $('#notify').html("The Chosne date for your event is less than 24 hours. We are sorry we can only respond  if event is 48 hours or more from the time of inquiry, Changing your event date to a later date will make everyone happy.");
+                $('#notify').html("The Chosen date for your event is less than 24 hours. We are sorry we can only respond  if event is 48 hours or more from the time of inquiry, Changing your event date to a later date will make everyone happy.");
                 $('#warningModal').on();
 
             }
