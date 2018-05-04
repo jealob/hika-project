@@ -44,10 +44,8 @@ $(document).ready(function () {
         userId: '5583030622',
         accessToken: '5583030622.ba4c844.186ef35d5451485b80e09eff337e69b6',
         limit: '8',
-
     });
     feed.run(); //Instagram Feed ends
-
 
     // Initialize Firebase
     var config = {
@@ -62,7 +60,6 @@ $(document).ready(function () {
 
     // Reference firebase database
     var database = firebase.database();
-
 
     // On click Submit Button 
     $("#submit").on("click", function (event) {
@@ -137,7 +134,6 @@ $(document).ready(function () {
                 $(this).attr("data-target", "#warningModal");
                 $('#notify').html("The Chosen date for your event is less than 24 hours. We are sorry we can only respond  if event is 48 hours or more from the time of inquiry, Changing your event date to a later date will make everyone happy.");
                 $('#warningModal').on();
-
             }
         }
         else {
@@ -220,7 +216,7 @@ $(document).ready(function () {
         google.maps.event.addListener(marker, 'click', function () {
             infowindow.open(map, marker);
         });
-        
+
         // Get the full place details when the user selects a place from the
         // list of suggestions.
         google.maps.event.addListener(autocomplete, 'place_changed', function () {

@@ -1,4 +1,9 @@
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 body, html {
   min-width: 400px;
 }
@@ -18,10 +23,11 @@ header {
 }
 
 
-.header-text {
-    padding-top: 8%;
-	font-size: 25px;
-	font: bold;
+.main-header-text {
+    position: relative;
+    bottom: -60px;
+	  font-size: 25px;
+	  font: bold;
     color: #F2D7D7;
     font-family: 'Cormorant', serif;
 }
@@ -29,12 +35,11 @@ header {
 .carousel-arrow {
     height: 230px;
     margin-top: 55px;
-
-
 }
 
-#igfeed-section { 
-margin-top: 20px;
+#insta-wrap { 
+  margin-top: 20px;
+  border: 1px solid #fff;
 }
 
 
@@ -106,15 +111,8 @@ margin-top: 20px;
 } 
 
 /* From map styling dont touch */
-header {
-  background-image: url("../images/logo.jpg");
-  background-repeat: no-repeat;
- background-color: black;
- background-position: center;
-}
-
 form {
-  background: wheat;
+  background: #f7f7f9;
 }
 
 .header-text {
@@ -236,7 +234,7 @@ label {
   }
 }
 
-/* width less than 980px  */
+/* width less than 640px  */
 @media screen and (max-width: 640px) {
   #places-input {
       width: 300px;
