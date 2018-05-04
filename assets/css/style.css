@@ -38,29 +38,9 @@ margin-top: 20px;
 
 
 }
-/* .carousel-control-prev-icon,
-.carousel-control-next-icon {
-  height: 100px;
-  width: 100px;
-  outline: black;
-  background-size: 100%, 100%;
 
-}
 
-.carousel-control-next-icon:after
-{
-  content: '>';
-  font-size: 55px;
-  color: black;
-}
-
-.carousel-control-prev-icon:after {
-  content: '<';
-  font-size: 55px;
-  color: black;
-} */
-
-#go-to-top {
+#myBtn {
     display: none;
     position: fixed;
     bottom: 20px;
@@ -77,7 +57,7 @@ margin-top: 20px;
     margin-bottom: 3%;
   }
   
-  #go-to-top:hover {
+  #myBtn:hover {
     background-color: #555;
   }
 
@@ -94,16 +74,17 @@ margin-top: 20px;
 .planning-column {
     margin: 0 20px; 
     border: 2px solid black; 
-    height: 770px 
+    height: 770px;
+    background-color: #F2D7D7;
+    
      }
      ul { display: block;
         list-style-type: circle;
      }
      h1 {
         font-size: 25px;
-        font-family: cursive;
+        font-family: 'Cormorant', serif;
         font-weight: 900; 
-
 
      }
 #social #container {
@@ -262,57 +243,3 @@ label {
 }
 
 /* appJS Ends */
-
-/* Styling to Event Planning page */
-
-/* sticky footer styling */
-
-/* https://css-tricks.com/snippets/css/sticky-footer/ */
-/* Sticky Footer with calc()*/
-.wrapper {
-  min-height: calc(100vh - 70px);
-}
-
-.event-footer {
-  height: 50px;
-}
-/* End Sticky Footer */
-
-/* General Styling */
-.logo {
-  font-family: 'Hi Melody', cursive;
-  border-bottom: 1px solid gray;
-}
-
-.nav-bar {
-  position: sticky;
-  top: 0;
-  z-index: 99;
-}
-
-.container-header {
-  color: #ffffff;
-  background: #7f462c;
-}
-
-.display-header {
-  color: #ffffff;
-  background:#000;
-}
-
-.bordered { 
-  border-color: #000;
-}
-
-.table-header, .label-name, .display-header{
-  font-weight: bold;
-}
-
-.event-footer{
-  padding: 15px 15px;
-  font-size:12px;
-  color:#ccc;
-  text-align:center;
-  background:#000;
-  height: 50px;
-}
