@@ -6,14 +6,10 @@ body, html {
 h2 {
 	text-align: center;
 	font-family: 'Tangerine', serif;
-	font-size: 48px;
+	font-size: 55px;
 	text-shadow: 4px 4px 4px #aaa;
 }
-#instawrap, #instafeed {
-	postition: absolute;
-	width: 100px;
-	height: 100px;
-}
+
 header {
     background-image: url("../images/logo.jpg");
     background-repeat: no-repeat;
