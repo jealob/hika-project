@@ -13,9 +13,9 @@ $(document).ready(function () {
 
     function scrollFunction() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document.getElementById("myBtn").style.display = "block";
+            document.getElementById("go-to-top").style.display = "block";
         } else {
-            document.getElementById("myBtn").style.display = "none";
+            document.getElementById("go-to-top").style.display = "none";
         }
     }
 
@@ -26,7 +26,7 @@ $(document).ready(function () {
     } //Jump to the Top ends
 
     // on click jump to the top button event
-    $("#myBtn").on("click", topFunction);
+    $("#go-to-top").on("click", topFunction);
 
     // What is this ????
     $("#planning-section").hide();

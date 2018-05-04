@@ -60,7 +60,7 @@ margin-top: 20px;
   color: black;
 } */
 
-#myBtn {
+#go-to-top {
     display: none;
     position: fixed;
     bottom: 20px;
@@ -77,7 +77,7 @@ margin-top: 20px;
     margin-bottom: 3%;
   }
   
-  #myBtn:hover {
+  #go-to-top:hover {
     background-color: #555;
   }
 
