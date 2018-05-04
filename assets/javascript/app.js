@@ -32,7 +32,7 @@ $(document).ready(function () {
     $("#planning-section").hide();
     $("#planning-button").on("click", function (event) {
         event.preventDefault();
-        console.log("click");
+        // console.log("click");
         $("#myCarousel").hide();
         $("#planning-section").show();
     }) //Ends
@@ -148,7 +148,7 @@ $(document).ready(function () {
     database.ref().on("child_added", function (childSnapshot, prevChildKey) {
         // 
         var data = childSnapshot.val();
-        console.log(data);
+        // console.log(data);
         var submissionDate = moment.unix(data.date).format("MM/DD/YY");
 
         // Add train Itinerary to table
@@ -264,7 +264,7 @@ $(document).ready(function () {
             url: geoURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response);
+            // console.log(response);
             // latlng = response.results[0].geometry.location;
             // eventLoc.val(response.results[0].formatted_address);
             (response.results.length === 1) ? address = response.results[0].formatted_address : address;
