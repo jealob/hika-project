@@ -67,7 +67,6 @@ $(document).ready(function () {
     // On click Submit Button 
     $("#submit").on("click", function (event) {
         event.preventDefault();
-
         // Grab client information
         var date = moment().format("X");
         var name = $("#name").val().trim();
@@ -75,12 +74,10 @@ $(document).ready(function () {
         var phone = $("#phone").val().trim();
         var preferredContact = $("#preferredContact").val().trim();
         var eventType = $("#eventType").val().trim();
-        // var eventDate = moment($("#eventDate").val().trim(), "YYYY/MM/DD").format("X");
-        var eventDate = $("#eventDate").val().trim();
+        var eventDate = moment($("#eventDate").val().trim()).format('L');
         var eventLoc = $("#eventLoc").val().trim();
         var serviceType = $("#serviceType").val().trim();
         var message = $("#message").val().trim();
-
         var timeDiff = moment(eventDate).diff(moment(), "hours");
         // debugger;
         if ((name && email && eventDate && eventType) || (name && phone && eventDate && eventType)) {
@@ -100,12 +97,22 @@ $(document).ready(function () {
                     message: message,
                 }
 
-                for (var item in bookingInfo) {
-                    if ((bookingInfo[item] === undefined) || (bookingInfo[item] === "Choose...")) {
-                        item = "none";
-                    }
-                };
+             // Ensuring data consistency 
+             for (var item in bookingInfo) {
+                if ((bookingInfo[item] === "") || (bookingInfo[item] === "Please Select")) {
+                    bookingInfo[item] = "none";
+                }
+            }
+            // Ensure method of contact matches with available information
+            if (bookingInfo.phone === "none") {
+                bookingInfo.preferredContact = "Email";
+            }
+            else if (bookingInfo.email === "none") {
+                if ((bookingInfo.preferredContact !== "Phone") || (bookingInfo.preferredContact !== "Text Message")) {
+                    bookingInfo.preferredContact = "Phone";
+                }
 
+            }
                 // Push data to database
                 database.ref().push(bookingInfo);
 
@@ -193,19 +200,12 @@ $(document).ready(function () {
         };
 
         map = new google.maps.Map(document.getElementById('map'), myOptions);
-
+        var $searchBox = $("<input id = 'places-input' class = 'controls' type = 'text'  placeholder = 'Search Box'>");
+        $(".map-canvas").prepend($searchBox);
         $("#map").append("<input 'type': 'text' 'id': 'places-input'>");
         var input = /** @type {HTMLInputElement} */(
-            document.getElementById('places-input')); //Need to create a div with the id pac-input
+            document.getElementById('places-input'));
 
-        // Create the autocomplete helper, and associate it with
-        // an HTML text input box.
-        // if (!input){ 
-        //     // debugger;
-        //     input = /** @type {HTMLInputElement} */(
-        //         document.getElementById('eventLoc'));
-        // }
-        // console.log(input);
         var autocomplete = new google.maps.places.Autocomplete(input);
         // console.log(autocomplete);
         autocomplete.bindTo('bounds', map);
@@ -220,6 +220,7 @@ $(document).ready(function () {
         google.maps.event.addListener(marker, 'click', function () {
             infowindow.open(map, marker);
         });
+        
         // Get the full place details when the user selects a place from the
         // list of suggestions.
         google.maps.event.addListener(autocomplete, 'place_changed', function () {
