@@ -71,48 +71,53 @@ header {
 
 
 footer {
-    padding: 2%;
+  padding: 2%;
  text-align: center;
-}
+  }
+
 #planning {
+margin: 0 auto;
 margin-top: 20px;
+}
 
-
+.center {
+  /* margin: auto; */
+  /* width: 50%; */
+  border: 3px solid green;
+  /* padding: 10px; */
 }
 .planning-column {
-    margin: 0 20px; 
-    border: 2px solid black; 
-    /* height: 770px; */
-    background-color: #F2D7D7;
-    
-     }
-     ul { display: block;
-        list-style-type: circle;
-     }
-     h1 {
-        font-size: 25px;
-        font-family: 'Cormorant', serif;
-        font-weight: 900; 
+  background-color: #F2D7D7;
+  }
 
-     }
+ul {
+  list-style-type: circle;
+  }
+
+h1 {
+  font-size: 25px;
+  font-family: 'Cormorant', serif;
+  font-weight: 900; 
+  }
+
 #social #container {
-    text-align: center;
+  text-align: center;
   }
   
   #social #container ul {
-    float: none;
+  float: none;
   }
   
   #social #container ul li {
-    float: none;
-    padding-left: 10px;
-    list-style-type: none;
-   display: inline-block;
+  float: none;
+  padding-left: 10px;
+  list-style-type: none;
+  display: inline-block;
   }
 
 .fab {
-    color: #F2D7D7;
-    align-items: center;
+  color: #F2D7D7;
+  align-items: center;
 } 
 
 /* From map styling dont touch */
