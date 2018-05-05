@@ -19,6 +19,13 @@ $(document).ready(function () {
         }
     }
 
+    // Social Media icons Plugins
+    $("#social").jsSocials({
+        url: "https://jealob.github.io/hika-project/",
+        showLabel: false,
+        showCount: "inside",
+        shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest"]
+    });
     // When the user clicks on the button, scroll to the top of the document
     function topFunction() {
         document.body.scrollTop = 0;
@@ -43,7 +50,7 @@ $(document).ready(function () {
         tagName: 'qaalbievents',
         userId: '5583030622',
         accessToken: '5583030622.ba4c844.186ef35d5451485b80e09eff337e69b6',
-        limit: '8',
+        limit: '7',
     });
     feed.run(); //Instagram Feed ends
 
@@ -94,22 +101,22 @@ $(document).ready(function () {
                     message: message,
                 }
 
-             // Ensuring data consistency 
-             for (var item in bookingInfo) {
-                if ((bookingInfo[item] === "") || (bookingInfo[item] === "Please Select")) {
-                    bookingInfo[item] = "none";
+                // Ensuring data consistency 
+                for (var item in bookingInfo) {
+                    if ((bookingInfo[item] === "") || (bookingInfo[item] === "Please Select")) {
+                        bookingInfo[item] = "none";
+                    }
                 }
-            }
-            // Ensure method of contact matches with available information
-            if (bookingInfo.phone === "none") {
-                bookingInfo.preferredContact = "Email";
-            }
-            else if (bookingInfo.email === "none") {
-                if ((bookingInfo.preferredContact !== "Phone") || (bookingInfo.preferredContact !== "Text Message")) {
-                    bookingInfo.preferredContact = "Phone";
+                // Ensure method of contact matches with available information
+                if (bookingInfo.phone === "none") {
+                    bookingInfo.preferredContact = "Email";
                 }
+                else if (bookingInfo.email === "none") {
+                    if ((bookingInfo.preferredContact !== "Phone") || (bookingInfo.preferredContact !== "Text Message")) {
+                        bookingInfo.preferredContact = "Phone";
+                    }
 
-            }
+                }
                 // Push data to database
                 database.ref().push(bookingInfo);
 
