@@ -26,6 +26,7 @@ $(document).ready(function () {
         showCount: "inside",
         shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest"]
     });
+    
     // When the user clicks on the button, scroll to the top of the document
     function topFunction() {
         document.body.scrollTop = 0;
@@ -83,11 +84,9 @@ $(document).ready(function () {
         var serviceType = $("#serviceType").val().trim();
         var message = $("#message").val().trim();
         var timeDiff = moment(eventDate).diff(moment(), "hours");
-        // debugger;
         if ((name && email && eventDate && eventType) || (name && phone && eventDate && eventType)) {
             if (timeDiff > 23) {
                 // Create Object for the values
-                // console.log("passed");
                 var bookingInfo = {
                     date: date,
                     name: name,
@@ -137,25 +136,22 @@ $(document).ready(function () {
                 $("#message").val("");
             }
             else {
-                // console.log("time too close");
                 $(this).attr("data-target", "#warningModal");
                 $('#notify').html("The Chosen date for your event is less than 24 hours. We are sorry we can only respond  if event is 48 hours or more from the time of inquiry, Changing your event date to a later date will make everyone happy.");
                 $('#warningModal').on();
             }
         }
         else {
-            // console.log("failed");
             $(this).attr("data-target", "#warningModal");
             $('#notify').html("To successfully submit a form required fields must be filled!, Please try filling out name, event date, event type and phone/email.");
             $('#warningModal').on();
         }
     }); // On submit click Ends
 
-    // Firebase watcher + initial loader + order/limit HINT: .on("child_added")
+    // Firebase watcher
     database.ref().on("child_added", function (childSnapshot, prevChildKey) {
         // 
         var data = childSnapshot.val();
-        // console.log(data);
         var submissionDate = moment.unix(data.date).format("MM/DD/YY");
 
         // Add train Itinerary to table
@@ -179,7 +175,6 @@ $(document).ready(function () {
     }
     // Device Location no found. No GPS on device
     var positionDenied = function () {
-        // alert("Unable to retrieve your location");
         initMap();
     };
 
@@ -193,13 +188,11 @@ $(document).ready(function () {
     var initMap = function (position) {
         // if client blocks know your location
         (!position) ? latlng = new google.maps.LatLng(44.0121221, -92.4801989) : latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        // latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         var markerTitle = "You are here";
         var myOptions = {
             zoom: 12,
             center: latlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
-            // icon:
         };
 
         map = new google.maps.Map(document.getElementById('map'), myOptions);
@@ -210,7 +203,6 @@ $(document).ready(function () {
             document.getElementById('places-input'));
 
         var autocomplete = new google.maps.places.Autocomplete(input);
-        // console.log(autocomplete);
         autocomplete.bindTo('bounds', map);
 
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -266,47 +258,18 @@ $(document).ready(function () {
         var googleAPIKey = "AIzaSyBf3B6oIwOLvm3DQgH-gsJu8bsON0AT8ao";
         var geoURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address +
             "&radius=150&key=" + googleAPIKey;
-        // console.log(geoURL);
         $.ajax({
             url: geoURL,
             method: "GET"
         }).then(function (response) {
-            // console.log(response);
-            // latlng = response.results[0].geometry.location;
-            // eventLoc.val(response.results[0].formatted_address);
             (response.results.length === 1) ? address = response.results[0].formatted_address : address;
             // Transfer content to HTML
             $("#eventLoc").val(address);
             $("#places-input").val(address);
             address = "";
-            // getPos();
-            // debugger;
         });
     })//on click event ends
 
     // Initialize map
     getPos();
 })
-
-// Weather api
-    // var weatherAPIKey = "&appid=3ddb20c4208b8c89b66edde10d53e4e3";
-    // var location = ["Saint Paul, Minnesota", "Minneapolis, Minnesota", "Rochester, Minnesota", "Richmond, Wisconsin"];
-    // var unit = "&units=imperial";
-
-    // // We then created an AJAX call
-    // location.forEach(function (city) {
-    //     // console.log(ci)
-    //     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + unit + weatherAPIKey;
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function (response) {
-    //         console.log(response);
-    //         var location = $("<div class = 'location'>").append(
-    //             '<br>' + '<strong>' + response.name + '</strong>' +
-    //             '<br>' + 'Temperature (F): ' + response.main.temp +
-    //             '<br>' + 'Wind Speed: ' + response.wind.speed +
-    //             '<br>' + 'Humidity: ' + response.main.humidity);
-    //         $("#weather").append(location);
-    //     });
-    // });
