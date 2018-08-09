@@ -6,4 +6,4 @@ Qaalbi Events is an event planning business that was founded by one of our group
 This is a single page app that utitlizes data persistency using Firebase Cloud Services.
 It was built with HTML/CSS/Bootstrap 4/JS/Jquery and momentjs.
 It uses multiple APIs to display media, map, and another information.
-Check out train scheduler by clicking on [here](https://jealob.github.io/hika-project).
+Check out Qaalbi Events page by clicking on [here](https://jealob.github.io/hika-project).
